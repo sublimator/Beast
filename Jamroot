@@ -45,6 +45,8 @@ else
   lib crypto ;
 }
 
+variant coverage : debug : <cxxflags>"-fprofile-arcs -ftest-coverage"
+                           <linkflags>"-lgcov" ;
 project beast
     : requirements
       <include>.

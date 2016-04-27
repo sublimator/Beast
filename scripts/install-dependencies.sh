@@ -29,6 +29,7 @@ ls -lah ~/.npm || mkdir ~/.npm
 # Make sure we own it
 chown -Rc $USER ~/.npm
 # We use this so we can filter the subtrees from our coverage report
-#pip install --user https://github.com/vinniefalco/codecov-python/zipball/source-match
+pip install --user https://github.com/sublimator/codecov-python/zipball/source-match
+pip install --user autobahntestsuite
 
 bash scripts/install-boost.sh

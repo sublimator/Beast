@@ -20,5 +20,10 @@ find . -name "*.gcda" | xargs rm
 
 if [[ $VARIANT == "coverage" ]]; then
   # We pass along -p to keep path segments so as to avoid collisions
+  export SERVER=`find . -name "wsproto_echo"`
+  nohup $SERVER&
+  cd scripts && wstest -m fuzzingclient
+  cd $TRAVIS_BUILD_DIR
+  cat nohup.out
   codecov --gcov-args=-p --gcov-source-match='^((include/beast)|examples|test)'
 fi

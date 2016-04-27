@@ -42,6 +42,9 @@ write(void const* data, std::size_t size, error_code& ec)
     using beast::http::detail::to_field_char;
     using beast::http::detail::to_value_char;
     using beast::http::detail::unhex;
+ 
+    if(size == 0 && s_ != s_closed)
+        return 0;
 
     auto begin =
         reinterpret_cast<char const*>(data);

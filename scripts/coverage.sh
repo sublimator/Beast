@@ -1,5 +1,7 @@
 # 0. Clear old counters ;)
 # We use -f as that way rm doesnt' return a non 0 error code
+# 
+set -e
 find . -name "*.gcda" | xargs rm -f
 rm *.info -f
 
@@ -18,7 +20,7 @@ cd scripts && wstest -m fuzzingclient
 cd ..
 cat nohup.out
 jobs
-kill -INT %1 # || echo "already dead"
+kill -INT %1
 # 3. create test coverage data file
 lcov --no-external -c -d . -o tests.info
 

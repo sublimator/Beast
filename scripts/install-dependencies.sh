@@ -14,7 +14,8 @@ do
     test -x $( type -p ${c}-$CLANG_VER )
     ln -sv $(type -p ${c}-$CLANG_VER) $HOME/bin/${c}
 done
-export PATH=$PWD/bin:$PATH
+# NOTE, changed from PWD -> HOME
+export PATH=$HOME/bin:$PATH
 
 # What versions are we ACTUALLY running?
 if [ -x $HOME/bin/g++ ]; then
@@ -33,3 +34,11 @@ pip install --user https://github.com/codecov/codecov-python/archive/master.zip
 pip install --user autobahntestsuite
 
 bash scripts/install-boost.sh
+
+#
+wget http://downloads.sourceforge.net/ltp/lcov-1.12.tar.gz
+tar xfvj lcov-1.12.tar.gz
+mkdir -p $HOME/lcov
+cd lcov-1.12 && make install PREFIX=$HOME/lcov
+export PATH=$HOME/lcov/usr/bin:$PATH
+echo $PATH

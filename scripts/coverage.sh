@@ -14,7 +14,7 @@ cd scripts && wstest -m fuzzingclient
 cd ..
 cat nohup.out
 jobs
-kill -INT %1
+kill -INT %1 || echo "already dead"
 # 3. create test coverage data file
 lcov --no-external -c -d . -o tests.info
 

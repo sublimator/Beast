@@ -15,17 +15,17 @@ find . -name "*.gcda" | xargs rm
 
 # Run the tests again, so all test output is contiguous
 
-`find . -name "core_tests"`
-`find . -name "http_tests"`
+find bin -name "*_tests" -exec {} \;
 
 if [[ $VARIANT == "coverage" ]]; then
   # We pass along -p to keep path segments so as to avoid collisions
-  export SERVER=`find . -name "wsproto_echo"`
+  export SERVER=`find . -name "websocket_echo"`
   nohup $SERVER&
   cd scripts && wstest -m fuzzingclient
-  cd $TRAVIS_BUILD_DIR
+  cd ..
   cat nohup.out
   jobs
   kill -INT %1
-  codecov --gcov-args=-p --gcov-source-match='^((include/beast)|examples|test)'
+  coveralls --gcov-options '\-lp'
+  # codecov --gcov-args=-p --gcov-source-match='^((include/beast)|examples|test)'
 fi

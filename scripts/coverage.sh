@@ -11,13 +11,14 @@ lcov --no-external -c -i -d . -o baseline.info
 #2. perform test
 find bin -name "*-tests" -exec {} \;
 export SERVER=`find . -name "websocket_echo"`
-nohup gdb -ex=run -ex=bt --args $SERVER&
+nohup gdb -ex=run -ex="bt full" --args $SERVER&
+# We need to wait a while so wstest can connect!
 sleep 5
 cd scripts && wstest -m fuzzingclient
 cd ..
 cat nohup.out
 jobs
-kill -INT %1 || echo "already dead"
+kill -INT %1 # || echo "already dead"
 # 3. create test coverage data file
 lcov --no-external -c -d . -o tests.info
 

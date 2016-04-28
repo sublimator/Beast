@@ -20,6 +20,7 @@ packages: &gcc5_pkgs
   - binutils-gold
   # Provides a backtrace if the unittests crash
   - gdb
+  - lcov
 
 packages: &clang36_pkgs
   - clang-3.6
@@ -31,6 +32,7 @@ packages: &clang36_pkgs
   - binutils-gold
   # Provides a backtrace if the unittests crash
   - gdb
+  - lcov
 
 matrix:
   include:

@@ -38,9 +38,10 @@ bash scripts/install-boost.sh
 #
 wget http://downloads.sourceforge.net/ltp/lcov-1.12.tar.gz
 tar xfvz lcov-1.12.tar.gz
-mkdir -p $PWD/lcov
-cd lcov-1.12 && make install PREFIX=$PWD/lcov
-export PATH=$PWD/lcov/usr/bin:$PATH
+export LCOV_PATH=$PWD/lcov
+mkdir -p $LCOV_PATH
+cd lcov-1.12 && make install PREFIX=$LCOV_PATH
+export PATH=$LCOV_PATH/usr/bin:$PATH
 
 echo $PATH
 python -V

@@ -42,3 +42,5 @@ mkdir -p $HOME/lcov
 cd lcov-1.12 && make install PREFIX=$HOME/lcov
 export PATH=$HOME/lcov/usr/bin:$PATH
 echo $PATH
+
+python -V

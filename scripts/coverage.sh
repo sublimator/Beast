@@ -3,6 +3,7 @@
 find . -name "*.gcda" | xargs rm -f
 rm *.info -f
 
+export PATH=$PWD/lcov/usr/bin:$PATH
 echo $PATH
 # 1. create baseline coverage data file
 lcov --no-external -c -i -d . -o baseline.info
@@ -10,7 +11,7 @@ lcov --no-external -c -i -d . -o baseline.info
 #2. perform test
 find bin -name "*-tests" -exec {} \;
 export SERVER=`find . -name "websocket_echo"`
-nohup $SERVER&
+nohup gdb -ex=run -ex=bt --args $SERVER&
 cd scripts && wstest -m fuzzingclient
 cd ..
 cat nohup.out

@@ -3,6 +3,7 @@
 find . -name "*.gcda" | xargs rm -f
 rm *.info -f
 
+echo $PATH
 # 1. create baseline coverage data file
 lcov --no-external -c -i -d . -o baseline.info
 

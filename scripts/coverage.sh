@@ -12,6 +12,7 @@ lcov --no-external -c -i -d . -o baseline.info
 find bin -name "*-tests" -exec {} \;
 export SERVER=`find . -name "websocket_echo"`
 nohup gdb -ex=run -ex=bt --args $SERVER&
+sleep 5
 cd scripts && wstest -m fuzzingclient
 cd ..
 cat nohup.out

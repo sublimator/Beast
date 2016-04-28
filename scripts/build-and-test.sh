@@ -25,5 +25,7 @@ if [[ $VARIANT == "coverage" ]]; then
   cd scripts && wstest -m fuzzingclient
   cd $TRAVIS_BUILD_DIR
   cat nohup.out
+  jobs
+  kill -INT %1
   codecov --gcov-args=-p --gcov-source-match='^((include/beast)|examples|test)'
 fi

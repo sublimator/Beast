@@ -34,7 +34,9 @@ pip install --user https://github.com/codecov/codecov-python/archive/master.zip
 pip install --user autobahntestsuite
 
 bash scripts/install-boost.sh
+bash scripts/install-valgrind.sh
 
+# Install lcov
 # Download the archive
 wget http://downloads.sourceforge.net/ltp/lcov-1.12.tar.gz
 # Extract to ~/lcov-1.12

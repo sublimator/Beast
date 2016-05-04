@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash -u
 # Assumptions:
 # 1) BOOST_ROOT and BOOST_URL are already defined,
 # and contain valid values.
@@ -13,12 +13,6 @@ then
   cd `dirname $BOOST_ROOT`
   rm -fr ${BOOST_ROOT}
   tar xzf /tmp/boost.tar.gz
-
-  # if [[ $ADDRESS_MODEL == "64" ]]; then
-  #   architecture="ia64"
-  # else
-  #   architecture="x86"
-  # fi
 
   params="define=_GLIBCXX_USE_CXX11_ABI=0 \
           address-model=$ADDRESS_MODEL --with-program_options \

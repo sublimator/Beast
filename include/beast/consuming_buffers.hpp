@@ -114,7 +114,7 @@ public:
     consume(std::size_t n);
 };
 
-/** Returns a new, consumned buffer sequence.
+/** Returns a new, consumed buffer sequence.
 
     This function returns a new buffer sequence which when iterated,
     efficiently represents the portion of the original buffer sequence

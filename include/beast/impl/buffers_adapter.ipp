@@ -28,7 +28,7 @@ public:
 
     class const_iterator;
 
-    const_buffers_type() = default;
+    const_buffers_type() = delete;
     const_buffers_type(
         const_buffers_type const&) = default;
     const_buffers_type& operator=(
@@ -54,7 +54,7 @@ class buffers_adapter<MutableBufferSequence>::
     const_buffers_type::const_iterator
 {
     iter_type it_;
-    buffers_adapter const* ba_;
+    buffers_adapter const* ba_ = nullptr;
 
 public:
     using value_type = boost::asio::const_buffer;
@@ -170,7 +170,7 @@ public:
 
     class const_iterator;
 
-    mutable_buffers_type() = default;
+    mutable_buffers_type() = delete;
     mutable_buffers_type(
         mutable_buffers_type const&) = default;
     mutable_buffers_type& operator=(
@@ -197,7 +197,7 @@ class buffers_adapter<MutableBufferSequence>::
 mutable_buffers_type::const_iterator
 {
     iter_type it_;
-    buffers_adapter const* ba_;
+    buffers_adapter const* ba_ = nullptr;
 
 public:
     using value_type = boost::asio::mutable_buffer;
